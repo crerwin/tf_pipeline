@@ -39,7 +39,7 @@ resource "aws_subnet" "default" {
 
 resource "aws_security_group" "default" {
   name = "erwin_tf_sg"
-  description = "sg_test - Erwin"
+  description = "probe test - Erwin"
   vpc_id = "${aws_vpc.default.id}"
 
   ingress {
