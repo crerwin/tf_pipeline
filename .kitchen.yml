@@ -4,13 +4,15 @@ driver:
 
 provisioner:
   name: terraform
+  variables:
+    - region=us-west-2
 
 platforms:
   - name: ubuntu
 
 transport:
   name: ssh
-  ssh_key: ~/.ssh/erwin_test2.pem
+  ssh_key: /tmp/erwin_us-west-2.pem
 
 verifier:
   name: terraform

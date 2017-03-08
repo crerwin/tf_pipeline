@@ -66,7 +66,7 @@ resource "aws_instance" "cerwintftest" {
   instance_type = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.default.id}"]
   subnet_id = "${aws_subnet.default.id}"
-  key_name = "erwin_test2"
+  key_name = "${lookup(var.key_pairs, var.region)}"
 
   tags {
     Name = "probe test - Erwin"
