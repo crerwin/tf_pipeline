@@ -26,7 +26,7 @@ node {
   if(apply) {
     stage('terraform apply') {
       unstash 'plan'
-      sh 'terraform version'
+      sh 'terraform apply plan.out'
     }
   }
 }
