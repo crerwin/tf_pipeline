@@ -62,7 +62,7 @@ resource "aws_security_group" "default" {
 }
 
 resource "aws_instance" "cerwintftest" {
-  ami           = "ami-e13739f6"
+  ami           = "${lookup(var.amis, var.region)}"
   instance_type = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.default.id}"]
   subnet_id = "${aws_subnet.default.id}"
