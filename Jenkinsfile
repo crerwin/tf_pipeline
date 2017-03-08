@@ -20,16 +20,15 @@ node {
         apply = false
         currentBuild.result = 'UNSTABLE'
       }
-    }
-  }
-
-  if(apply) {
-    stage('terraform apply') {
-      unstash 'plan'
-      sh 'terraform apply plan.out'
-    }
-    stage('Archive state') {
-      archiveArtifacts artifacts: '*.tfstate'
+      if(apply) {
+        stage('terraform apply') {
+          unstash 'plan'
+          sh 'terraform apply plan.out'
+        }
+        stage('Archive state') {
+          archiveArtifacts artifacts: '*.tfstate'
+        }
+      }
     }
   }
 }
