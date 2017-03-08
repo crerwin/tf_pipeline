@@ -26,7 +26,7 @@ node {
   if(apply) {
     stage('terraform apply') {
       unstash 'plan'
-      sh 'terraform version > artifact.tfstate'
+      sh 'terraform apply plan.out'
     }
     stage('Archive state') {
       archiveArtifacts artifacts: '*.tfstate'
