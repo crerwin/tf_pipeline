@@ -1,4 +1,6 @@
 node {
+    stage name: 'Checkout'
+    git url: 'https://github.com/crerwin/tf_pipeline.git'
     stage name: 'terraform plan'
     def planStatus = sh(script: 'terraform plan -out=plan.out -detailed-exitcode', returnStatus: true)
     println planStatus
