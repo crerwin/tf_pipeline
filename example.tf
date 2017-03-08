@@ -70,5 +70,6 @@ resource "aws_instance" "cerwintftest" {
 
   tags {
     Name = "probe test - Erwin"
+    Environment = "testing"
   }
 }
