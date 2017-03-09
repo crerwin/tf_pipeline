@@ -3,7 +3,7 @@ node {
     git url: 'https://github.com/crerwin/tf_pipeline.git'
   }
   stage('Get State') {
-    if (FileExists("terraform.tfstate") {
+    if (FileExists("terraform.tfstate")) {
       sh "rm -f terraform.tfstate"
     }
     if (FileExists(".terraform/terraform.tfstate")) {
