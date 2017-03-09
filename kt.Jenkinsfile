@@ -5,7 +5,7 @@ node {
   stage('bundle install') {
     sh(script: 'bundle install --path ./gems')
   }
-  stage('kitchen list') {
+  stage('kitchen-terraform') {
     sh(script: 'bundle exec kitchen test')
   }
 }
