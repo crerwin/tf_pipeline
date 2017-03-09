@@ -9,10 +9,10 @@ node {
     sh(script: 'bundle exec kitchen test')
   }
   stage('Get State') {
-    if (FileExists("terraform.tfstate")) {
+    if (fileExists("terraform.tfstate")) {
       sh "rm -f terraform.tfstate"
     }
-    if (FileExists(".terraform/terraform.tfstate")) {
+    if (fileExists(".terraform/terraform.tfstate")) {
       sh "rm -f .terraform/terraform.tfstate"
     }
     sh 'terraform remote config -backend=local -backend-config="path=/var/lib/jenkins/tfstate/terraform.tfstate"'
