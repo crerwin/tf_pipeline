@@ -37,9 +37,6 @@ node {
           unstash 'plan'
           sh 'terraform apply plan.out'
         }
-        stage('Archive state') {
-          archiveArtifacts artifacts: '*.tfstate'
-        }
       }
     }
   }
