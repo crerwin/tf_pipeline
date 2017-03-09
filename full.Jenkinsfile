@@ -9,8 +9,8 @@ node {
     sh(script: 'bundle exec kitchen test')
   }
   stage('Get State') {
-    sh 'terraform remote config -backend=local -backend-config="path=/var/lib/jenkins/tfstate/terraform.tfstate"'
     sh 'rm -f terraform.tfstate'
+    sh 'terraform remote config -backend=local -backend-config="path=/var/lib/jenkins/tfstate/terraform.tfstate"'
     sh 'terraform get'
   }
   stage('terraform plan') {
