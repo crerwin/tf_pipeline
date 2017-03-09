@@ -2,6 +2,11 @@ node {
   stage('Checkout') {
     git url: 'https://github.com/crerwin/tf_pipeline.git'
   }
+  stage('Get State') {
+    sh 'terraform remote config -backend=local -backend-config="path=/var/lib/jenkins/tfstate/terraform.tfstate"'
+    sh 'rm -f terraform.tfstate'
+    sh 'terraform get'
+  }
   stage('terraform plan') {
     def planStatus = sh(script: 'terraform plan -out=plan.out -detailed-exitcode', returnStatus: true)
     println planStatus
