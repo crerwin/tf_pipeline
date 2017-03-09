@@ -2,13 +2,15 @@ node {
   stage('Checkout') {
     git url: 'https://github.com/crerwin/tf_pipeline.git'
   }
-  stage('Get State') {
+  stage('Clean Up') {
     if (fileExists("terraform.tfstate")) {
       sh "rm -f terraform.tfstate"
     }
     if (fileExists(".terraform/terraform.tfstate")) {
       sh "rm -f .terraform/terraform.tfstate"
     }
+  }
+  stage('Get State') {
     sh 'terraform remote config -backend=local -backend-config="path=/var/lib/jenkins/tfstate/terraform.tfstate"'
     sh 'terraform get'
   }
