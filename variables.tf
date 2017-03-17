@@ -16,7 +16,7 @@ variable "key_pairs" {
   type = "map"
   default = {
     us-east-1 = "erwin_test2"
-    us-east-2 = "erwin_test2"
+    us-east-2 = "erwin_us-east-2"
     us-west-1 = "erwin_test2"
     us-west-2 = "erwin_us-west-2"
   }
