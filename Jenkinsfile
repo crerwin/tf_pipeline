@@ -11,7 +11,8 @@ node {
     }
   }
   stage('Get State') {
-    sh 'terraform remote config -backend=local -backend-config="path=/var/lib/jenkins/tfstate/terraform.tfstate"'
+    //sh 'terraform remote config -backend=local -backend-config="path=/var/lib/jenkins/tfstate/terraform.tfstate"'
+    sh 'terraform init'
     sh 'terraform get'
   }
   stage('terraform plan') {
