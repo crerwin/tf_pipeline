@@ -10,10 +10,9 @@ node {
       sh "rm -f .terraform/terraform.tfstate"
     }
   }
-  stage('Get State') {
+  stage('terraform init') {
     //sh 'terraform remote config -backend=local -backend-config="path=/var/lib/jenkins/tfstate/terraform.tfstate"'
-    sh 'terraform init'
-    sh 'terraform get'
+    sh 'terraform init -backend=true -get=true'
   }
   stage('terraform plan') {
     def planStatus = sh(script: 'terraform plan -out=plan.out -detailed-exitcode', returnStatus: true)
